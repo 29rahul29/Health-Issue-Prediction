@@ -14,13 +14,13 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
 
-diabetes_model = pickle.load(open(f'{working_dir}/Saved_Models/diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open(f'{working_dir}/saved_models/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open(f'{working_dir}/Saved_Models/heart_disease_model.sav', 'rb'))
+heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
 
-parkinsons_model = pickle.load(open(f'{working_dir}/Saved_Models/parkinsons_model.sav', 'rb'))
+parkinsons_model = pickle.load(open(f'{working_dir}/saved_models/parkinsons_model.sav', 'rb'))
 
-# sidebar for navigation
+
 with st.sidebar:
     selected = option_menu('Multiple Disease Prediction System',
 
@@ -66,10 +66,9 @@ if selected == 'Diabetes Prediction':
         Age = st.text_input('Age of the Person')
 
 
-    # code for Prediction
+  
     diab_diagnosis = ''
 
-    # creating a button for Prediction
 
     if st.button('Diabetes Test Result'):
 
@@ -134,10 +133,10 @@ if selected == 'Heart Disease Prediction':
     with col1:
         thal = st.text_input('thal: 0 = normal; 1 = fixed defect; 2 = reversable defect')
 
-    # code for Prediction
+    
     heart_diagnosis = ''
 
-    # creating a button for Prediction
+   
 
     if st.button('Heart Disease Test Result'):
 
@@ -157,7 +156,6 @@ if selected == 'Heart Disease Prediction':
 # Parkinson's Prediction Page
 if selected == "Parkinsons Prediction":
 
-    # page title
     st.title("Parkinson's Disease Prediction using ML")
 
     col1, col2, col3, col4, col5 = st.columns(5)
@@ -228,10 +226,10 @@ if selected == "Parkinsons Prediction":
     with col2:
         PPE = st.text_input('PPE')
 
-    # code for Prediction
+
     parkinsons_diagnosis = ''
 
-    # creating a button for Prediction    
+     
     if st.button("Parkinson's Test Result"):
 
         user_input = [fo, fhi, flo, Jitter_percent, Jitter_Abs,
