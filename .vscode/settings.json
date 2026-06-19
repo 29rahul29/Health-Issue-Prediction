@@ -1,3 +1,10 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:venv"
+  // Use the existing venv as the interpreter for this workspace
+  "python.defaultInterpreterPath": "D:/Project/Health Issue prediction/venv/Scripts/python.exe",
+
+  // Optional: tell the Python extension where to look for venvs if you ever create new ones
+  "python.venvPath": "D:/Project/Health Issue prediction",
+
+  // Keep the env‑manager setting if you like it (it does no harm)
+  "python-envs.defaultEnvManager": "ms-python.python:venv"
 }
