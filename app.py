@@ -67,12 +67,127 @@ def parse_numeric_inputs(inputs, field_names):
     return cleaned, None
 
 
+# Helper callback to populate input fields with sample values
+def load_sample_values(sample_dict):
+    for key, value in sample_dict.items():
+        st.session_state[key] = str(value)
+
+
+# Realistic Sample Data from Datasets
+SAMPLES = {
+    'diabetes_healthy': {
+        'diab_pregnancies': '1',
+        'diab_glucose': '85',
+        'diab_bp': '66',
+        'diab_skin': '29',
+        'diab_insulin': '26',
+        'diab_bmi': '26.6',
+        'diab_dpf': '0.351',
+        'diab_age': '31'
+    },
+    'diabetes_risk': {
+        'diab_pregnancies': '6',
+        'diab_glucose': '148',
+        'diab_bp': '72',
+        'diab_skin': '35',
+        'diab_insulin': '168',
+        'diab_bmi': '33.6',
+        'diab_dpf': '0.627',
+        'diab_age': '50'
+    },
+    'heart_healthy': {
+        'heart_age': '67',
+        'heart_sex': '1',
+        'heart_cp': '0',
+        'heart_trestbps': '160',
+        'heart_chol': '286',
+        'heart_fbs': '0',
+        'heart_restecg': '0',
+        'heart_thalach': '108',
+        'heart_exang': '1',
+        'heart_oldpeak': '1.5',
+        'heart_slope': '1',
+        'heart_ca': '3',
+        'heart_thal': '2'
+    },
+    'heart_risk': {
+        'heart_age': '63',
+        'heart_sex': '1',
+        'heart_cp': '3',
+        'heart_trestbps': '145',
+        'heart_chol': '233',
+        'heart_fbs': '1',
+        'heart_restecg': '0',
+        'heart_thalach': '150',
+        'heart_exang': '0',
+        'heart_oldpeak': '2.3',
+        'heart_slope': '0',
+        'heart_ca': '0',
+        'heart_thal': '1'
+    },
+    'parkinsons_healthy': {
+        'park_fo': '197.076',
+        'park_fhi': '206.896',
+        'park_flo': '192.055',
+        'park_jitter_pct': '0.00289',
+        'park_jitter_abs': '0.00001',
+        'park_rap': '0.00166',
+        'park_ppq': '0.00168',
+        'park_ddp': '0.00498',
+        'park_shimmer': '0.01098',
+        'park_shimmer_db': '0.097',
+        'park_apq3': '0.00563',
+        'park_apq5': '0.0068',
+        'park_apq': '0.00802',
+        'park_dda': '0.01689',
+        'park_nhr': '0.00339',
+        'park_hnr': '26.775',
+        'park_rpde': '0.422229',
+        'park_dfa': '0.741367',
+        'park_spread1': '-7.3483',
+        'park_spread2': '0.177551',
+        'park_d2': '1.743867',
+        'park_ppe': '0.085569'
+    },
+    'parkinsons_risk': {
+        'park_fo': '119.992',
+        'park_fhi': '157.302',
+        'park_flo': '74.997',
+        'park_jitter_pct': '0.00784',
+        'park_jitter_abs': '0.00007',
+        'park_rap': '0.0037',
+        'park_ppq': '0.00554',
+        'park_ddp': '0.01109',
+        'park_shimmer': '0.04374',
+        'park_shimmer_db': '0.426',
+        'park_apq3': '0.02182',
+        'park_apq5': '0.0313',
+        'park_apq': '0.02971',
+        'park_dda': '0.06545',
+        'park_nhr': '0.02211',
+        'park_hnr': '21.033',
+        'park_rpde': '0.414783',
+        'park_dfa': '0.815285',
+        'park_spread1': '-4.813031',
+        'park_spread2': '0.266482',
+        'park_d2': '2.301442',
+        'park_ppe': '0.284654'
+    }
+}
+
+
 # ==========================================
 # 1. Diabetes Prediction Page
 # ==========================================
 if selected == 'Diabetes Prediction':
 
     st.title('Diabetes Prediction using ML')
+
+    col_btn1, col_btn2, _ = st.columns([1, 1, 3])
+    with col_btn1:
+        st.button('Load Healthy Sample', on_click=load_sample_values, args=(SAMPLES['diabetes_healthy'],), key='btn_diab_healthy')
+    with col_btn2:
+        st.button('Load High-Risk Sample', on_click=load_sample_values, args=(SAMPLES['diabetes_risk'],), key='btn_diab_risk')
 
     with st.form(key='diabetes_form', border=False):
         col1, col2, col3 = st.columns(3)
@@ -138,6 +253,12 @@ if selected == 'Diabetes Prediction':
 if selected == 'Heart Disease Prediction':
 
     st.title('Heart Disease Prediction using ML')
+
+    col_btn1, col_btn2, _ = st.columns([1, 1, 3])
+    with col_btn1:
+        st.button('Load Healthy Sample', on_click=load_sample_values, args=(SAMPLES['heart_healthy'],), key='btn_heart_healthy')
+    with col_btn2:
+        st.button('Load High-Risk Sample', on_click=load_sample_values, args=(SAMPLES['heart_risk'],), key='btn_heart_risk')
 
     with st.form(key='heart_form', border=False):
         col1, col2, col3 = st.columns(3)
@@ -219,6 +340,12 @@ if selected == 'Heart Disease Prediction':
 if selected == "Parkinsons Prediction":
 
     st.title("Parkinson's Disease Prediction using ML")
+
+    col_btn1, col_btn2, _ = st.columns([1, 1, 3])
+    with col_btn1:
+        st.button('Load Healthy Sample', on_click=load_sample_values, args=(SAMPLES['parkinsons_healthy'],), key='btn_park_healthy')
+    with col_btn2:
+        st.button('Load High-Risk Sample', on_click=load_sample_values, args=(SAMPLES['parkinsons_risk'],), key='btn_park_risk')
 
     with st.form(key='parkinsons_form', border=False):
         col1, col2, col3, col4, col5 = st.columns(5)
