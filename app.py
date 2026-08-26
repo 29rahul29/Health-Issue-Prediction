@@ -19,16 +19,16 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 # loading the saved models with caching
 @st.cache_resource
 def load_models():
-    # Diabetes uses full Scikit-Learn pipeline (imputer + scaler + SVC)
+    # Diabetes & Parkinson's use full Scikit-Learn pipelines
     diabetes_pipeline_path = os.path.join(working_dir, 'saved_models', 'diabetes_pipeline.joblib')
     heart_model_path = os.path.join(working_dir, 'saved_models', 'heart_disease_model.sav')
-    parkinsons_model_path = os.path.join(working_dir, 'saved_models', 'parkinsons_model.sav')
+    parkinsons_pipeline_path = os.path.join(working_dir, 'saved_models', 'parkinsons_pipeline.joblib')
 
     diabetes_pipeline = joblib.load(diabetes_pipeline_path)
     heart_disease_model = pickle.load(open(heart_model_path, 'rb'))
-    parkinsons_model = pickle.load(open(parkinsons_model_path, 'rb'))
+    parkinsons_pipeline = joblib.load(parkinsons_pipeline_path)
 
-    return diabetes_pipeline, heart_disease_model, parkinsons_model
+    return diabetes_pipeline, heart_disease_model, parkinsons_pipeline
 
 
 diabetes_model, heart_disease_model, parkinsons_model = load_models()
