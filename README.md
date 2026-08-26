@@ -7,7 +7,7 @@ A machine learning web application built with Python, Scikit-Learn, and Streamli
 ## Features & Disease Modules
 
 | Disease Module | Machine Learning Model | Key Input Features | Output |
-| :--- | :--- | :--- | :--- |
+| :-- | :-- | :-- | :-- |
 | **Diabetes Prediction** | Support Vector Classifier (`SVC`) with `SimpleImputer` & `StandardScaler` Pipeline | Glucose, Blood Pressure, Insulin, BMI, Age, Pregnancies, Skin Thickness, Diabetes Pedigree Function | Diabetic / Not Diabetic |
 | **Heart Disease Prediction** | Logistic Regression | Age, Sex, Chest Pain Type (`cp`), Resting BP (`trestbps`), Cholesterol (`chol`), Fasting Blood Sugar (`fbs`), Resting ECG (`restecg`), Max Heart Rate (`thalach`), Exercise Angina (`exang`), ST Depression (`oldpeak`), Slope, Major Vessels (`ca`), Thalassemia (`thal`) | Heart Disease / No Heart Disease |
 | **Parkinson's Disease Prediction** | Support Vector Classifier (`SVC`) | 22 vocal/acoustic signal metrics (Fundamental frequencies `MDVP:Fo/Fhi/Flo`, Jitter metrics, Shimmer metrics, `NHR`, `HNR`, `RPDE`, `DFA`, `spread1/2`, `D2`, `PPE`) | Parkinson's Detected / Healthy |
