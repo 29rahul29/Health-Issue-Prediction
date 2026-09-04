@@ -1,4 +1,4 @@
-# Multiple Disease Prediction System
+# Multiple Disease Prediction Syste
 
 A machine learning web application built with Python, Scikit-Learn, and Streamlit to predict the risk of multiple health conditions (Diabetes, Heart Disease, and Parkinson's Disease) based on clinical and biomedical parameters.
 
